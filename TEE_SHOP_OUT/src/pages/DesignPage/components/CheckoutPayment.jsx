@@ -19,6 +19,7 @@ import { goToPayment } from "../../../redux/design/designActions";
 import { Payment } from "../../../redux/cart/cartActions";
 import { useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const mapState = (state) => ({
   shippingInfo: state.user.shippingInfo,
@@ -50,12 +51,12 @@ const {lastorder}=useSelector((state)=>state.cartData)
       props.history.push('/thankyou')
     }
   },[lastorder])
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="info-head">
         <Col xs={6} className="info-category-head">
-          Payment Information
+          {t("Payment Information")}
         </Col>
       </Row>
 
@@ -63,26 +64,26 @@ const {lastorder}=useSelector((state)=>state.cartData)
         <Col xs={12} className="ship-box">
           <Row className="info-row justify-content-between">
             <Col xs={12} sm={2} className="label">
-              Contact
+            {t("Contact")}
             </Col>
             <Col sm={8}>{shippingInfo.email}</Col>
             <Col sm={2} className="change-label">
-              Change
+             {t("Change")}
             </Col>
           </Row>
           <Row className="info-row justify-content-between">
             <Col xs={12} sm={2} className="label">
-              Ship to
+              {t("Ship to")}
             </Col>
             <Col sm={8}>
               {shippingInfo.firstName} {shippingInfo.lastName} <br />
               {shippingInfo.address} {shippingInfo.street}, {shippingInfo.city},
               {shippingInfo.region}, {shippingInfo.country},{" "}
               {shippingInfo.pinCode} <br />
-              mobile: {shippingInfo.phone}
+             {t("mobile")}: {shippingInfo.phone}
             </Col>
             <Col sm={2} className="change-label">
-              Change
+              {t("Change")}
             </Col>
           </Row>
         </Col>
@@ -100,7 +101,7 @@ const {lastorder}=useSelector((state)=>state.cartData)
               alipay
               bitcoin
             >
-              <Button style={{ marginTop: 50 }}>Proceeed With Payment</Button>
+              <Button style={{ marginTop: 50 }}>{t("Proceeed With Payment")}</Button>
             </StripeCheckout>
         </Col>
       </Row>

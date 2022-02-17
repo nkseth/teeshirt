@@ -7,6 +7,7 @@ import { OverlayPanel } from 'primereact/overlaypanel';
 import {COLORS} from '../../../shared/utils/constants'
 import { connect } from 'react-redux'
 import actionTypes from '../../../redux/design/actionTypes';
+import { useTranslation } from 'react-i18next';
 
 
  function DrawingComponent({makeConfig, setDrawingConfig}) {
@@ -38,6 +39,8 @@ import actionTypes from '../../../redux/design/actionTypes';
         makeConfig({...drawConfig, [key]: value })
     }
 
+    const {t}=useTranslation()
+
     return (
         <>
         {/* <Col xs={12}  className="input-row">
@@ -53,7 +56,7 @@ import actionTypes from '../../../redux/design/actionTypes';
         </Col>*/}
         <Row className="input-row color-row">
         <Col xs={5.5}  >
-        <div><label>Color</label></div>
+        <div><label>{t("Color")}</label></div>
         <div><label style={{ width: '6em'}}>{drawColor.name}</label> <div className="xsm-box color-box" onClick={(e) => op.current.toggle(e)} style={{width: '20pt', backgroundColor: drawColor.color}}></div></div>
         <OverlayPanel ref={op}  id="overlay_panel" style={{width: '120pt'}} className="overlaypanel-demo">                       
             {COLORS.map(color => {
@@ -63,7 +66,7 @@ import actionTypes from '../../../redux/design/actionTypes';
         </OverlayPanel>
         </Col>
         <Col xs={2}>
-        <div><label>Pencil</label></div>
+        <div><label>{t("Pencil")}</label></div>
         <div className="sm-box pencil-icon" onClick={() => selectTool('pen')} ><BsPencil /></div>
         </Col>
         {/* <Col xs={2}>

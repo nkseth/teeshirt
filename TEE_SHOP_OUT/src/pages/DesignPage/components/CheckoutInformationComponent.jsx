@@ -20,6 +20,7 @@ import {
   addAddressRequest,
 } from "../../../redux/user/userActions";
 import { goToShipping } from "../../../redux/design/designActions";
+import { useTranslation } from "react-i18next";
 
 const countryDroDowmStyle = {
   fontFamily:
@@ -188,6 +189,7 @@ const mapState = (state) => ({
     dispatch(goToShipping());
   };
 
+  const {t}=useTranslation()
   return (
     <>
       <Container>
@@ -195,7 +197,7 @@ const mapState = (state) => ({
           {
 
           address && address.length === 0 ?(
-            <>Empty</>
+            <>{t("Empty")}</>
           ):address.map((item,i)=>{
             var selectedAddr = 0;
             return (
@@ -222,10 +224,10 @@ const mapState = (state) => ({
       </Container>
       <Row className="info-head">
         <Col xs={6} className="info-category-head">
-          Contact Information
+          {t("Contact Information")}
         </Col>
         <Col xs={6} className="log-text">
-          Already Have An Account? <span className="login-link">Login</span>
+          {t("Already_Have_An_Account?")} <span className="login-link">{t("Login")}</span>
         </Col>
       </Row>
       <Row className="info-form">
@@ -265,7 +267,7 @@ const mapState = (state) => ({
                     htmlFor="email"
                     className={classNames({ "p-error": !!errors.email })}
                   >
-                    Email*
+                  {t("Email")}*
                   </label>
                 </span>
                 {getFormErrorMessage("email")}
@@ -276,7 +278,7 @@ const mapState = (state) => ({
             {" "}
             <Col xs={6} className="info-category-head">
               {" "}
-              Shipping Address
+              {t("Shipping_Address")}
             </Col>
           </Row>
           <Row>
@@ -301,7 +303,7 @@ const mapState = (state) => ({
                     htmlFor="name"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    First Name*
+                    {t("First Name")}*
                   </label>
                 </span>
                 {getFormErrorMessage("firstName")}
@@ -329,7 +331,7 @@ const mapState = (state) => ({
                     htmlFor="lastName"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    Last Name*
+                  {t("Last Name")}*
                   </label>
                 </span>
                 {getFormErrorMessage("lastName")}
@@ -358,7 +360,7 @@ const mapState = (state) => ({
                     htmlFor="name"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    House no, Building name
+                    {t("House no, Building name")}
                   </label>
                 </span>
                 {getFormErrorMessage("address")}
@@ -387,7 +389,7 @@ const mapState = (state) => ({
                     htmlFor="name"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    Street name, Area
+                    {t("Street name, Area")}
                   </label>
                 </span>
                 {getFormErrorMessage("street")}
@@ -416,7 +418,7 @@ const mapState = (state) => ({
                     htmlFor="city"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    City
+                   {t("City")}
                   </label>
                 </span>
                 {getFormErrorMessage("city")}
@@ -492,7 +494,7 @@ const mapState = (state) => ({
                     htmlFor="pinCode"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    Pin code
+                    {t("Pin code")}
                   </label>
                 </span>
                 {getFormErrorMessage("pinCode")}
@@ -521,7 +523,7 @@ const mapState = (state) => ({
                     htmlFor="name"
                     className={classNames({ "p-error": errors.name })}
                   >
-                    Phone Number
+                   {t("Phone Number")} 
                   </label>
                 </span>
                 {getFormErrorMessage("phone")}
@@ -551,14 +553,14 @@ const mapState = (state) => ({
                   style={{ margin: 0, marginLeft: ".5em", fontSize: "10pt" }}
                   className={classNames({ "p-error": errors.accept })}
                 >
-                  Save this information for the next time
+                  {t("Save this information for the next time")}
                 </label>
               </div>
             </Col>
           </Row>
           <div>
             <Button
-              label="Continue To Shipping"
+              label={t("Continue To Shipping")}
               className="p-button-rounded tee-btn-success"
             />
           </div>

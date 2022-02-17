@@ -11,6 +11,7 @@ import {
 } from "../../../redux/design/designActions";
 import { AddToCart } from "../../../redux/cart/cartActions";
 import { setSiginVisible } from "../../../redux/app/appActions";
+import {useTranslation} from 'react-i18next'
 const mapState = (state) => ({
   step: state.design.designStep,
   selectedProduct: state.design.selectedProduct,
@@ -19,6 +20,7 @@ const mapState = (state) => ({
 });
 
 export default function DesignHeaderComponent() {
+  const {t}=useTranslation()
   const { step, selectedProduct, grandTotal, isLoggedIn } =
     useSelector(mapState);
   const toast = useRef(null);
@@ -61,20 +63,20 @@ export default function DesignHeaderComponent() {
         <div>
           <span>Step {step}:</span>
           <strong>
-            {(step === 1 || step === 2) && " Select an apparel you like?"}
-            {step === 3 && " Start Designing"}
-            {step === 4 && " Select Quantity"}
-            {step === 5 && " Checkout"}
+            {(step === 1 || step === 2) && t("Select an apparel you like?")}
+            {step === 3 && t(" Start Designing")}
+            {step === 4 && t(" Select Quantity")}
+            {step === 5 && t(" Checkout")}
           </strong>
         </div>
         <div className="d-flex mt-3 mt-sm-0">
           <Button
-            label={step === 1 ? "Cancel" : "Previous"}
+            label={step === 1 ? t("Cancel") : t("Previous")}
             onClick={backClick}
             className="p-button-rounded p-button-outlined tee-btn-outlined"
           />
           <Button
-            label={step !== 5 ? "Next" : "Checkout"}
+            label={step !== 5 ? t("Next") : t("Checkout")}
             className="p-button-rounded tee-btn-success"
             onClick={forwardClick}
           />

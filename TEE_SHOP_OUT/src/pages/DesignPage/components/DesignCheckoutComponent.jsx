@@ -23,6 +23,7 @@ import {
 import CheckoutInformationComponent from "./CheckoutInformationComponent";
 import ShippingInformationComponent from "./ShippingInformationComponent";
 import CheckoutPayment from "./CheckoutPayment";
+import { useTranslation } from "react-i18next";
 
 
 const discount = 10;
@@ -98,7 +99,7 @@ function DesignCheckoutComponent({
       setMovingToCart(true);
     }
   };
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="step5-row">
@@ -110,7 +111,7 @@ function DesignCheckoutComponent({
                 <div className="checkout-bread">
                   {" "}
                   <span className="active" onClick={goToCart}>
-                    Cart <img src={leftArrow} />{" "}
+                    {t("Cart")} <img src={leftArrow} />{" "}
                   </span>
                   <span
                     className={classNames({
@@ -120,22 +121,22 @@ function DesignCheckoutComponent({
                     })}
                     onClick={goToInformation}
                   >
-                    Information <img src={leftArrow} />
+                    {t("Information")} <img src={leftArrow} />
                   </span>
                   <span
                     className={classNames({
                       active: checkoutStage === "shipping",
                     })}
                   >
-                    Shipping <img src={leftArrow} />{" "}
+                    {t("Shipping")} <img src={leftArrow} />{" "}
                   </span>{" "}
-                  <span>Payment</span>{" "}
+                  <span>{t("Payment")}</span>{" "}
                 </div>{" "}
               </Row>
             )}
             {(checkoutStage === "cart" || cartOnly) && (
               <>
-                <h6>My Carts ({cartCount} items)</h6>
+                <h6>{t("My Carts")} ({cartCount} {t("items")})</h6>
                 {console.log(cartItems)}
                 {cartItems.map((item,index) => {
                   const { qty } = item;
@@ -182,7 +183,7 @@ function DesignCheckoutComponent({
                             </div>
                             <Row className="input-row d-none d-md-flex">
                               <Col>
-                                <label>Color</label>
+                                <label>{t("Color")}</label>
                                 <div>
                                   <strong>
                                     {
@@ -209,19 +210,19 @@ function DesignCheckoutComponent({
                                 </div>
                               </Col>
                               <Col>
-                                <label>Unit Price</label>
+                                <label>{t("Unit Price")}</label>
                                 <div>
                                   <strong>AED {item.price}</strong>
                                 </div>
                               </Col>
                               <Col>
-                                <label>Qty</label>
+                                <label>{t("Qty")}</label>
                                 <div>
                                   <strong>{item.qty[size]}</strong>
                                 </div>
                               </Col>
                               <Col>
-                                <label>Total</label>
+                                <label>{t("Total")}</label>
                                 <div>
                                   <strong>
                                     AED {item.price * item.qty[size]}
@@ -253,25 +254,25 @@ function DesignCheckoutComponent({
         {cartCount > 0 && (
           <Col className="" lg={4}>
             <div className="step5-right box mt-4 mt-lg-0">
-              <h6>Order Summary</h6>
+              <h6>{t("Order Summary")}</h6>
               <div className="d-flex justify-content-between align-items-center">
                 <div className="summary-item label">
-                  Price ({cartCount} items)
+                  {t("Price")} ({cartCount} {t("items")})
                 </div>
                 <div className="summary-item value">AED {subTotal}</div>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <div className="summary-item label">Discount</div>
+                <div className="summary-item label">{t("Discount")}</div>
                 <div className="summary-item discount value">
                   - AED {discount}
                 </div>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <div className="summary-item label">Shipping charge</div>
+                <div className="summary-item label">{t("Shipping charge")}</div>
                 <div className="summary-item value">AED {shippingCharge}</div>
               </div>
               <div className="d-flex justify-content-between align-items-center">
-                <div className="summary-item label total">Total</div>
+                <div className="summary-item label total">{t("Total")}</div>
                 <div className="summary-item value total">AED {grandTotal}</div>
               </div>
               <Row>

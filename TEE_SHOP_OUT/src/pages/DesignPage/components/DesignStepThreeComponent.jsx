@@ -37,6 +37,7 @@ import UploadComponent from "./UploadComponent";
 import ImageStickerComponent from "./ImageStickerComponent";
 
 import Scene from "./3D/Scene";
+import { useTranslation } from "react-i18next";
 
 const fonts = [
   { id: 1, name: "Arial" },
@@ -210,7 +211,7 @@ function DesignStepThreeComponent({
     setDimensionActive("3d");
     setDisplay3d(true);
   };
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="step3-row">
@@ -221,8 +222,8 @@ function DesignStepThreeComponent({
                 <Col xs={6} className="tool-item">
                   <div onClick={() => makeStage("addText")} className="icn-box">
                     <img src={addTextIcon} />
-                    <strong>Add Text</strong>
-                    <p>Add your text here</p>
+                    <strong>{t("Add Text")}</strong>
+                    <p>{t("Add your text here")}</p>
                   </div>
                 </Col>
                 <Col
@@ -232,8 +233,8 @@ function DesignStepThreeComponent({
                 >
                   <div className="icn-box">
                     <img src={addShapesIcon} />
-                    <strong>Add Shapes</strong>
-                    <p>Circle, triangle, etc.</p>
+                    <strong>{("Add Shapes")}</strong>
+                    <p>{t("Circle, triangle, etc.")}</p>
                   </div>
                 </Col>
                 <Col
@@ -243,8 +244,8 @@ function DesignStepThreeComponent({
                 >
                   <div className="icn-box">
                     <img src={drawIcon} />
-                    <strong>Draw</strong>
-                    <p>Bring your creativity</p>
+                    <strong>{t("Draw")}</strong>
+                    <p>{t("Bring your creativity")}</p>
                   </div>
                 </Col>
                 <Col
@@ -254,8 +255,8 @@ function DesignStepThreeComponent({
                 >
                   <div className="icn-box">
                     <img src={uploadDesignIcon} />
-                    <strong>Upload Design</strong>
-                    <p>Browse or import</p>
+                    <strong>{t("Upload Design")}</strong>
+                    <p>{t("Browse or import")}</p>
                   </div>
                 </Col>
                 <Col
@@ -265,8 +266,8 @@ function DesignStepThreeComponent({
                 >
                   <div className="icn-box">
                     <img src={designIdeas} />
-                    <strong>Design Ideas</strong>
-                    <p>Ready to use templates</p>
+                    <strong>{t("Design Ideas")}</strong>
+                    <p>{t("Ready to use templates")}</p>
                   </div>
                 </Col>
                 <Col
@@ -276,8 +277,8 @@ function DesignStepThreeComponent({
                 >
                   <div className="icn-box">
                     <img src={stickersIcon} />
-                    <strong>Stickers</strong>
-                    <p>Browse stickers</p>
+                    <strong>{t("Stickers")}</strong>
+                    <p>{t("Browse stickers")}</p>
                   </div>
                 </Col>
               </Row>
@@ -293,7 +294,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Add Text</strong>
+                    <strong>{t("Add Text")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">
@@ -312,7 +313,7 @@ function DesignStepThreeComponent({
                         placeholder="Keyword"
                       />
                       <Button
-                        label="Add"
+                        label={t("Add")}
                         onClick={addNewText}
                         className="add-txt-btn"
                       />
@@ -321,7 +322,7 @@ function DesignStepThreeComponent({
                 </Col>
                 <Col xs={12} className="input-row">
                   <Col xs={6} className="inputs">
-                    <label>Font</label>
+                    <label>{("Font")}</label>
                     <Dropdown
                       className="input-filed"
                       value={selectedFont}
@@ -332,7 +333,7 @@ function DesignStepThreeComponent({
                     />
                   </Col>
                   <Col xs={6} className="inputs second">
-                    <label>Text Style </label>
+                    <label>{t("Text Style")}</label>
                     <Dropdown
                       className="input-filed second-field"
                       value={selectedFontStyle}
@@ -344,12 +345,12 @@ function DesignStepThreeComponent({
                   </Col>
                 </Col>
                 <Col xs={12} className="input-row">
-                  <label>Text Size</label>{" "}
+                  <label>{("Text Size")}</label>{" "}
                   <span className="text-value">{textSize}</span>
                   <Slider value={textSize} onChange={changeTextSize} />
                 </Col>
                 <Col xs={12} className="input-row">
-                  <label>Line Height</label>{" "}
+                  <label>{t("Line Height")}</label>{" "}
                   <span className="text-value">{lineHeight}</span>
                   <Slider
                     value={lineHeight}
@@ -358,7 +359,7 @@ function DesignStepThreeComponent({
                   />
                 </Col>
                 <Col xs={12} className="input-row">
-                  <label>Rotation</label>
+                  <label>{("Rotation")}</label>
                   <span className="text-value">{rotation}</span>
                   <Slider
                     value={rotation}
@@ -368,7 +369,7 @@ function DesignStepThreeComponent({
                   />
                 </Col>
                 <Col xs={12} className="input-row">
-                  <label>Outline</label>
+                  <label>{t("Outline")}</label>
                   <span className="text-value">{outLine}</span>
                   <Slider value={outLine} onChange={changeOutLine} />
                 </Col>
@@ -376,7 +377,7 @@ function DesignStepThreeComponent({
                 <Row className="input-row color-row">
                   <Col xs={5.5}>
                     <div>
-                      <label>Text Color</label>
+                      <label>{t("Text Color")}</label>
                     </div>
                     <div>
                       <label style={{ width: "6em" }}>
@@ -419,7 +420,7 @@ function DesignStepThreeComponent({
                   </Col>
                   <Col xs={5.5}>
                     <div>
-                      <label>Outline Color</label>
+                      <label>{t("Outline Color")}</label>
                     </div>
                     <div>
                       <label style={{ width: "6em" }}>
@@ -484,7 +485,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Add Shapes</strong>
+                    <strong>{t("Add Shapes")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">
@@ -511,7 +512,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Draw</strong>
+                    <strong>{t("Draw")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">
@@ -533,7 +534,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Upload Design</strong>
+                    <strong>{t("Upload Design")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">
@@ -554,7 +555,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Design Ideas</strong>
+                    <strong>{t("Design Ideas")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">
@@ -576,7 +577,7 @@ function DesignStepThreeComponent({
                     ></div>
                   </Col>
                   <Col xs={8} className="fl txt-cnt">
-                    <strong>Stickers</strong>
+                    <strong>{t("Stickers")}</strong>
                   </Col>
                   <Col xs={1}>
                     <div className="letter-icn">

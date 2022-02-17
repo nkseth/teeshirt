@@ -12,7 +12,8 @@ import HeaderComponent from "./shared/components/HeaderComponent";
 import FooterComponent from "./shared/components/FooterComponent";
 import ResetPassword from "./pages/User/Components/ResetPassword";
 import Thankyou from "./pages/thankyoupage/thankyoupage";
-
+import './i18n';
+import useRTL, { RTLContext } from './useRtl';
 const Home = lazy(() =>
   import("./pages/HomePage/components/HomePageComponent")
 );
@@ -42,7 +43,7 @@ const mapState = (state) => ({
 
 function App() {
   const { loader } = useSelector(mapState);
-
+  const [isRTL, setIsRTL] = useRTL();
   return (
     <>
       {loader && <ProgressSpinner className="loader" />}
@@ -50,6 +51,7 @@ function App() {
         {/* //   <BlockUI blocked={loader} fullScreen /> */}
 
         <Router>
+        <RTLContext.Provider value={{ value: isRTL, setValue: setIsRTL }}>
           <HeaderWithRouter />
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
@@ -92,6 +94,7 @@ function App() {
               
             </Switch>
           </Suspense>
+          </RTLContext.Provider>
           <FooterComponent />
         </Router>
       </div>

@@ -1,4 +1,114 @@
 {
-  "name": "Name",
-  "manish": "Manish"
+  
+      "Design":"Design",
+      "Shop":"Shop",
+      "your_own":"Your own",
+      "Explore_Design":"Explore Design",
+      "Account":"Account",
+      "Wishlist":"Wishlist",
+      "my_profile":"My Profile",
+      "My_Orders":" My Orders",
+      "Logout":" Logout",
+      "Sign_In":"Sign_In",
+      "Create_Account":"Create Account",
+      "Forgot_Your_Password?":"Forgot Your Password?",
+      "Already_Have_An_Account?":"Already Have An Account?",
+      "Login":"Login",
+     
+      "Main_Pages":"Main Pages",
+      "About_Us":"About Us",
+      "Contact_Us":"Contact Us",
+      "Abouts":"Abouts",
+      "Terms_of_Usage":"Terms of Usage",
+      "Privacy_Policy":"Privacy Policy",
+      "Return Policy":"Return Policy",
+      "Categories":"Categories",
+      "Dual_Color" :"Dual Color",
+       "Accessories":"Accessories",
+       "Subscribe":"Subscribe",
+       "subnewsletter":"Subscribe to our newsletter, so that you can be the first to know about new offers and promotions",
+
+       "Empty":"Empty",
+       "Contact_Information":"Contact Information",
+       "Email":"Email",
+       "Shipping_Address":"Shipping Address",
+       "First Name":"First Name",
+       "Last Name":"Last Name",
+        "House no, Building name":"House no, Building name",
+      "Street name, Area":"Street name, Area",
+       "City":"City",
+       "Pin code":"Pin code",
+       "Phone Number":"Phone Number",
+       "Save this information for the next time":" Save this information for the next time",
+       "Continue To Shipping":"Continue To Shipping",
+
+
+       "Payment Information":"Payment Information",
+       "Contact":"Contact",
+       "Change":" Change",
+       "Ship to":"Ship to",
+       "mobile":"mobile",
+       "Proceeed With Payment":"Proceeed With Payment",
+       
+       
+       
+       "Cart":"Cart",
+       "Information":"Information",
+      "Shipping":"Shipping",
+       "Payment":"Payment",
+       "My Carts":"My Carts",
+       "items":"items",
+       "Color":"Color",
+       "Unit Price":"Unit Price",
+       "Qty":"Qty",
+       "Total":"Total",
+       "Order Summary":"Order Summary",
+       "Price":"Price",
+       "Discount":"Discount",
+       "Shipping charge":"Shipping charge",
+      
+      
+       "All styles":"All styles",
+       "Mens apparel":"Men’s apparel",
+       "Womens apparel":"Women’s apparel" ,
+       "Kidss apparel":"Kids’s apparel",
+       "Select an apparel you like?":"Select an apparel you like?",
+       " Start Designing":" Start Designing",
+       " Select Quantity":" Select Quantity",
+       " Checkout":" Checkout",
+       "Cancel":"Cancel",
+       "Previous":"Previous",
+       "Next":"Next",
+       "Checkout":"Checkout",
+
+
+       "Add Text":"Add Text",
+       "Add your text here":"Add your text here",
+       "Add Shapes":"Add Shapes",
+       "Circle, triangle, etc.":"Circle, triangle, etc.",
+       "Draw":"Draw",
+       "Bring your creativity":"Bring your creativity",
+       "Upload Design":"Upload Design",
+       "Browse or import":"Browse or import",
+       "Design Ideas":"Design Ideas",
+        "Ready to use templates":"Ready to use templates",
+        "Stickers":"Stickers",
+        "Browse stickers":"Browse stickers",
+        "Add":"Add",
+        "Font":"Font",
+        "Text Style":"Text Style ",
+        "Text Size":"Text Size",
+        "Text Color":"Text Color",
+        "Line Height":"Line Height",
+        "Rotation":"Rotation",
+        "Outline":"Outline",
+        "Outline Color":"Outline Color",
+        "Pencil":"Pencil"
+  
+        
+      
+
+
+
+
 }

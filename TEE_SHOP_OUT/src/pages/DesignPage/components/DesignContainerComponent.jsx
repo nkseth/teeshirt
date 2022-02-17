@@ -24,6 +24,7 @@ import poloneckGirls from "../../../assets/images/design/polo neck-girls.svg";
 import DesignStepThreeComponent from "./DesignStepThreeComponent";
 import SelectQuantityComponent from "./SelectQuantityComponent";
 import DesignCheckoutComponent from "./DesignCheckoutComponent";
+import { useTranslation } from "react-i18next";
 
 const womenItems = [
   {
@@ -117,7 +118,7 @@ const mapState = (state) => ({
 const DesignContainerComponent = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { product, step } = useSelector(mapState);
-
+const {t}=useTranslation()
   console.log("step", step);
   return (
     <Row className="design-container">
@@ -129,21 +130,21 @@ const DesignContainerComponent = () => {
               onTabChange={(e) => setActiveIndex(e.index)}
               className="apparel-tab"
             >
-              <TabPanel header="All styles">
+              <TabPanel header={t("All styles")}>
                 <ItemListComponent items={allItems} />
               </TabPanel>
-              <TabPanel header="Men’s apparel">
+              <TabPanel header={t("Mens apparel")}>
                 <ItemListComponent
                   items={allItems.filter((item) => item.id !== 6)}
                 />
               </TabPanel>
-              <TabPanel header="Women’s apparel">
+              <TabPanel header={t("Womens apparel")}>
                 <ItemListComponent items={womenItems} />
               </TabPanel>
-              <TabPanel header="Kids’s apparel">
+              <TabPanel header={t("Kidss apparel")}>
                 <ItemListComponent items={kidstems} />
               </TabPanel>
-              <TabPanel header="Accessories">
+              <TabPanel header={t("Accessories")}>
                 <ItemListComponent items={accessories} />
               </TabPanel>
             </TabView>

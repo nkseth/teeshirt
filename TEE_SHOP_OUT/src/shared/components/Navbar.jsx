@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Row, Col, Dropdown } from "react-bootstrap";
@@ -30,6 +30,9 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Select from 'react-select'
+import { useTranslation } from "react-i18next";
+import {RTLContext} from '../../useRtl'
 
 const mapState = (state) => ({
   count: state.cartData.cartCount,
@@ -44,6 +47,20 @@ const mapState = (state) => ({
   enableForgotPwdScreen: state.app.enableForgotPwdScreen,
 });
 export default function NavbarComponent(props) {
+  const options = [
+    { value: 'en', label: 'en' },
+    { value: 'hn', label: 'hn' },
+  
+  ]
+  const { t, i18n } = useTranslation();
+  const changeLanguageHandler = (e) => {
+    const languageValue = e.value
+    i18n.changeLanguage(languageValue);
+    if(languageValue==="hn"){
+      setValue(!value);
+    }
+  }
+
   const { location } = props;
   const {
     count,
@@ -63,6 +80,7 @@ export default function NavbarComponent(props) {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+  const {value, setValue }=useContext(RTLContext)
   const loginFormHeader = (
     <div style={{ textAlign: "center" }}>
       <Button
@@ -82,7 +100,7 @@ export default function NavbarComponent(props) {
   }, []);
   return (
     <>
-      <Navbar expand="lg" expanded={expanded}>
+      <Navbar expand="lg" expanded={expanded} style={{position:'relative'}}>
         <Navbar.Brand href="/">
           <img
             src="/logo.png"
@@ -145,8 +163,8 @@ export default function NavbarComponent(props) {
               {" "}
               <div>
                 {" "}
-                <strong>Design</strong>{" "}
-                <p className="link-desc-txt">Your own</p>
+                <strong>{t("Design")}</strong>{" "}
+                <p className="link-desc-txt">{t("your_own")}</p>
               </div>
             </Nav.Link>
             <Nav.Link
@@ -157,8 +175,8 @@ export default function NavbarComponent(props) {
               {" "}
               <div>
                 {" "}
-                <strong>Shop </strong>{" "}
-                <p className="link-desc-txt">Explore Designs</p>
+                <strong>{t("Shop")}</strong>{" "}
+                <p className="link-desc-txt">{t("Explore_Design")}</p>
               </div>{" "}
             </Nav.Link>
           </Nav>
@@ -194,7 +212,7 @@ export default function NavbarComponent(props) {
               >
                 <Dropdown.Toggle>
                   <img src={userIcon} />
-                  <span className="acnt-txt">Account</span>
+                  <span className="acnt-txt">{t('Account')}</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Row
@@ -219,7 +237,7 @@ export default function NavbarComponent(props) {
                           op.current.hide();
                         }}
                       >
-                        My Profile
+                        {t("my_profile")}
                       </Link>
                     </div>
                   </Row>
@@ -232,7 +250,7 @@ export default function NavbarComponent(props) {
                           op.current.hide();
                         }}
                       >
-                        My Orders
+                       {t("My_Orders")}
                       </Link>
                     </div>
                   </Row>
@@ -246,14 +264,14 @@ export default function NavbarComponent(props) {
                         dispatch(loggedOut());
                       }}
                     >
-                      Logout
+                     {t("Logout")}
                     </div>
                   </Row>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
               <span onClick={() => dispatch(setSiginVisible(true))}>
-                Sign In
+                {t("Sign_In")}
               </span>
             )}
           </Nav>
@@ -272,7 +290,7 @@ export default function NavbarComponent(props) {
               }}
             >
               <img src={favIcon} />
-              <span className="acnt-txt">Wishlist</span>{" "}
+              <span className="acnt-txt">{t("Wishlist")}</span>{" "}
             </div>
           </Nav>
 
@@ -284,6 +302,15 @@ export default function NavbarComponent(props) {
             }}
           >
             <Image src={cartIcon} fluid width="60" /> <span>{count}</span>
+          </Nav>
+          <Nav 
+            className="header-item  main-nav-item d-none d-lg-block"
+             style={{width:100,position:'absolute',right:'-100px',top:'-15px'}}
+           
+          >
+            <Select
+            onChange={changeLanguageHandler}
+            options={options} defaultValue={{ value: 'en', label: 'en'}} />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -320,37 +347,37 @@ export default function NavbarComponent(props) {
                 className="signup-link"
                 onClick={() => dispatch(setEnableLoginScreen(false))}
               >
-                Create Account
+              {t("Create_Account")}
               </a>
               <a
                 className="signup-link fr"
                 onClick={() => dispatch(setForgotPasswordScreen(true))}
               >
-                Forgot Your Password?
+                {t("Forgot_Your_Password?")}
               </a>
             </>
           )}
           {!enableLoginScreen && (
             <>
               <SignUpComponent />
-              <span className="acnt-txt">Already Have An Account? </span>
+              <span className="acnt-txt">{t("Already_Have_An_Account?")} </span>
               <a
                 className="signup-link"
                 onClick={() => dispatch(setEnableLoginScreen(true))}
               >
-                Login
+                {t("Login")}
               </a>
             </>
           )}
           {enableForgotPwdScreen && (
             <>
               <ForgotPasswordComponent />
-              <span className="acnt-txt">Already Have An Account? </span>
+              <span className="acnt-txt">{t("Already_Have_An_Account?")} </span>
               <a
                 className="signup-link"
                 onClick={() => dispatch(setForgotPasswordScreen(false))}
               >
-                Login
+              {t("Login")}
               </a>
             </>
           )}
@@ -384,7 +411,7 @@ export default function NavbarComponent(props) {
                 op.current.hide();
               }}
             >
-              My Profile
+             {t("my_profile")}
             </Link>
           </Col>
         </Row>
@@ -398,7 +425,7 @@ export default function NavbarComponent(props) {
               dispatch(loggedOut());
             }}
           >
-            Logout
+            {t("Logout")}
           </Col>
         </Row>
 
