@@ -145,7 +145,7 @@ a {
 }
 .tee-btn-success {
   height: 2rem;
-  line-height: 2rem;
+  line-height: initial;
   color: #ffffff;
   background-color: basic.$active-color;
   border: none;
@@ -156,8 +156,9 @@ a {
 }
 .tee-btn-outlined {
   height: 2rem;
-  line-height: 2rem;
+  line-height: initial;
   color: basic.$active-color !important;
+  padding: 0px 15px 2px;
 }
 .signup-link {
   text-decoration: underline;

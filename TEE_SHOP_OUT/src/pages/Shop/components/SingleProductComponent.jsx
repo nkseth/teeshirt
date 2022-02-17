@@ -24,7 +24,7 @@ export default function SingleProductComponent({
   removeWishlist,
 }) {
   const dispatch = useDispatch();
-
+debugger
   return (
     <Card className="single-product-container">
       {wishlist && (
@@ -40,7 +40,7 @@ export default function SingleProductComponent({
 
       <div className="img-wrapper" style={{ overflow: "hidden" }}>
         <Link to={`/shop/product/${product.productId}`}>
-          <img src={product.image} width="100%" alt={product.name} />
+          <img src={product.image.path} width="100%" alt={product.name} />
         </Link>
       </div>
       <Row className="product-descr-container">
