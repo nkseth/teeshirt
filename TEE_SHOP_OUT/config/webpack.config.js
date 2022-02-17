@@ -1,5 +1,3 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -26,6 +24,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const WebpackRTLPlugin = require('webpack-rtl-plugin')
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -631,7 +630,7 @@ module.exports = function (webpackEnv) {
       // See https://github.com/facebook/create-react-app/issues/186
       isEnvDevelopment &&
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
-      isEnvProduction &&
+      // isEnvProduction &&
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
@@ -736,6 +735,10 @@ module.exports = function (webpackEnv) {
               }),
             },
           },
+        }),
+        new WebpackRTLPlugin({
+          diffOnly: true,
+          minify: true
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
