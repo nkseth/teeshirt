@@ -7,6 +7,7 @@ import { Column } from "primereact/column";
 import { Dialog } from "primereact/dialog";
 
 import { addSizeNumber } from "../../../redux/design/designActions";
+import { useTranslation } from "react-i18next";
 
 const products = [
   { qty: 50, uPrice: "AED 15.00", tPrice: "AED 750.00", save: "AED 150.00" },
@@ -35,7 +36,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
     e.returnValue = "";
     //  alert('unsaved changes')
   };
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="step4-row mt-4 mb-4">
@@ -51,16 +52,16 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
             <div className="step4-right-body">
               <div>
                 {" "}
-                <strong>Round Neck T-shirt (Black)</strong>
+                <strong>{t("Round Neck T-shirt (Black)")}</strong>
               </div>
               <div className="input-row size-label">
-                <label>Size</label>{" "}
+                <label>{t("Size")}</label>{" "}
                 <span
                   className="size-chart-lbl"
                   onClick={() => setDisplaySizeChart(true)}
                 >
                   {" "}
-                  Size-Chart
+                  {t("Size-Chart")}
                 </span>
               </div>
               <div className="size-container">
@@ -75,7 +76,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
                       onChange={(e) => updateSizeQty(e.target.value, "s")}
                     />
                   </div>
-                  <div className="stock-txt-box">Stock : 1000</div>
+                  <div className="stock-txt-box">{t("Stock")} : 1000</div>
                 </Col>
                 <Col xs={2}>
                   <div className="size-txt">
@@ -88,7 +89,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
                       onChange={(e) => updateSizeQty(e.target.value, "m")}
                     />
                   </div>
-                  <div className="stock-txt-box">Stock : 1000</div>
+                  <div className="stock-txt-box">{t("Stock")} : 1000</div>
                 </Col>
                 <Col xs={2}>
                   <div className="size-txt">
@@ -101,7 +102,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
                       onChange={(e) => updateSizeQty(e.target.value, "l")}
                     />
                   </div>
-                  <div className="stock-txt-box">Stock : 1000</div>
+                  <div className="stock-txt-box">{t("Stock")} : 1000</div>
                 </Col>
                 <Col xs={2}>
                   <div className="size-txt">
@@ -114,7 +115,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
                       onChange={(e) => updateSizeQty(e.target.value, "xl")}
                     />
                   </div>
-                  <div className="stock-txt-box">Stock : 1000</div>
+                  <div className="stock-txt-box">{t("Stock")} : 1000</div>
                 </Col>
                 <Col xs={2}>
                   <div className="size-txt">
@@ -127,7 +128,7 @@ function SelectQuantityComponent({ selectedProduct, updateSizeQty }) {
                       onChange={(e) => updateSizeQty(e.target.value, "xxl")}
                     />
                   </div>
-                  <div className="stock-txt-box">Stock : 1000</div>
+                  <div className="stock-txt-box">{t("Stock")} : 1000</div>
                 </Col>
               </div>
               <div className="product-list-table ">

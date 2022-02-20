@@ -5,6 +5,7 @@ import { getBrandsRequest } from "../../../redux/cart/cartActions";
 import { connect } from "react-redux";
 import menImg from "../../../assets/images/shop/fit/men.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function BrandsListing({ type, getBrandsRequest }) {
   const [brands, setBrands] = useState([]);
@@ -21,14 +22,14 @@ function BrandsListing({ type, getBrandsRequest }) {
 
     getItems();
   }, [getBrandsRequest]);
-
+const {t}=useTranslation()
   return (
     <Row className="fit-item">
       <Col sm={5}>
         <div className="d-flex d-sm-block justify-content-between">
           <div>
             <h6>
-              <strong>Brands</strong>
+              <strong>{t("Brands")}</strong>
             </h6>
             <ul>
               {brands.map((item) => (

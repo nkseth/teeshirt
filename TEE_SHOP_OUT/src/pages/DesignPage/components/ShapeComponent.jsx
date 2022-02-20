@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { shapes } from '../../../shared/utils/constants';
 import {COLORS} from '../../../shared/utils/constants'
 import actionTypes from '../../../redux/design/actionTypes';
+import { useTranslation } from 'react-i18next';
 
   const ShapeComponent = ({setShapes, pickedShapeId, shapesChoosen, addShape, updateShape, selectedShapes}) => {
     
@@ -83,6 +84,7 @@ import actionTypes from '../../../redux/design/actionTypes';
         }
     }, [pickedShapeId])
 
+    const {t}=useTranslation()
     return (
        <>
 
@@ -97,20 +99,20 @@ import actionTypes from '../../../redux/design/actionTypes';
             <div className='edit-shape-item'> <div className={'icn-container '+shapeForEdit.name} /></div>
             </Col>
             <Col xs={12} className="input-row">
-                <label>Shape Size</label> <span className="text-value">{shapeForEdit['shapeSize'] || shapeSize}</span>
+                <label>{t("Shape Size")}</label> <span className="text-value">{shapeForEdit['shapeSize'] || shapeSize}</span>
                 <Slider value={shapeForEdit['shapeSize'] || shapeSize} step={0.1} onChange={changeShapeSize} />
             </Col>
             <Col xs={12} className="input-row">
-                <label>Rotation</label> <span className="text-value">{shapeForEdit['shapeRotation'] || shapeRotation}</span>
+                <label>{t("Rotation")}</label> <span className="text-value">{shapeForEdit['shapeRotation'] || shapeRotation}</span>
                 <Slider value={shapeForEdit['shapeRotation'] ||  shapeRotation} min={1} onChange={changeShapeRotation} />
             </Col> 
             <Col xs={12} className="input-row">
-                <label>Outline</label><span className="text-value">{shapeForEdit['shapeOutLine'] || shapeOutLine}</span>
+                <label>{t("Outline")}</label><span className="text-value">{shapeForEdit['shapeOutLine'] || shapeOutLine}</span>
                 <Slider value={shapeForEdit['shapeOutLine'] || shapeOutLine} min={0}  onChange={changeShapeOutLine} />
             </Col>
             <Row className="input-row color-row">
         <Col xs={5.5} >
-        <div><label>Shape Color</label></div>
+        <div><label>{t("Shape Color")}</label></div>
         <div><label style={{ width: '6em'}}>{shapeColor.name}</label> <div className="xsm-box color-box" onClick={(e) => op.current.toggle(e)} style={{width: '20pt', backgroundColor: shapeForEdit['color'].color || shapeColor['color'].color}}></div></div>
         <OverlayPanel ref={op}  id="overlay_panel" style={{width: '120pt'}} className="overlaypanel-demo">                       
             {COLORS.map(color => {
@@ -122,7 +124,7 @@ import actionTypes from '../../../redux/design/actionTypes';
         </OverlayPanel>
         </Col>
         <Col xs={5.5}>                         
-        <div><label>Outline Color</label></div>
+        <div><label>{t("Outline Color")}</label></div>
         <div><label style={{ width: '6em'}}>{shapeOutLineColor.name}</label> <div className="xsm-box color-box" onClick={(e) => op1.current.toggle(e)} style={{width: '20pt', backgroundColor: shapeForEdit['outLineColor'].color || shapeOutLineColor['color'].color}}></div></div>
         <OverlayPanel ref={op1}  id="overlay_panel" style={{width: '120pt'}} className="overlaypanel-demo">                       
             {COLORS.map(color => {

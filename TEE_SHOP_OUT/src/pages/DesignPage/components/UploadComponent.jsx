@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { COLORS } from "../../../shared/utils/constants";
 import actionTypes from "../../../redux/design/actionTypes";
+import { useTranslation } from "react-i18next";
 
 function UploadComponent({
   addImage,
@@ -150,13 +151,14 @@ function UploadComponent({
     setFile(e.files[0]);
     addImage({ src: e.files[0], id: uuidv4() });
   };
+  const {t}=useTranslation()
 
   return (
     <>
       {!uploadStart && (
         <Col xs={12} className="input-row">
           <div>
-            <label>Choose a file to upload</label>
+            <label>{t("Choose a file to upload")}</label>
           </div>
 
           <FileUpload
@@ -179,10 +181,10 @@ function UploadComponent({
           <Col xs={12}>
             <div>
               {" "}
-              <label>Max file upload size 5 MB</label>
+              <label>{t("Max file upload size")} 5 MB</label>
             </div>
             <div>
-              <label>We support</label>{" "}
+              <label>{t("We support")}</label>{" "}
               <span className="sprt-format">.JPEG</span>
               <span className="sprt-format">.PNG</span>
               <span className="sprt-format">.SVG</span>
@@ -224,7 +226,7 @@ function UploadComponent({
             />
           </Col>
           <Col xs={12} className="input-row">
-            <label>Rotation</label>
+            <label>{t("Rotation")}</label>
             <span className="text-value">{imageRotation}</span>
             <Slider
               min={0}
@@ -233,7 +235,7 @@ function UploadComponent({
             />
           </Col>
           <Col xs={12} className="input-row">
-            <label>Outline</label>
+            <label>{t("Outline")}</label>
             <span className="text-value">{imageOutline}</span>
             <Slider
               min={0}
@@ -243,7 +245,7 @@ function UploadComponent({
           </Col>
           <Col xs={5.5} className="input-row" style={{ padding: "1em" }}>
             <div>
-              <label>Outline Color</label>
+              <label>{t("Outline Color")}</label>
             </div>
             <div>
               <label style={{ width: "6em" }}>{imageOutLineColor.name}</label>{" "}

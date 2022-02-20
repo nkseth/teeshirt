@@ -102,7 +102,7 @@ function DesignStepThreeComponent({
   const op1 = useRef(null);
   const shapeComponentRef = useRef();
   console.log(shapeComponentRef);
-
+debugger
   //  const baseImage = () => (<SvgColor
   //     svg={product.img}
   //     width={200}
@@ -201,6 +201,7 @@ function DesignStepThreeComponent({
 
   const getDrawConfig = (config) => {
     console.log("config", config);
+    debugger
     setDrawConfig(config);
   };
 

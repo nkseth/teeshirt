@@ -17,6 +17,7 @@ import {
   addWishlistRequest,
   deleteWishlistRequest,
 } from "../../../redux/user/userActions";
+import { useTranslation } from "react-i18next";
 
 export default function SingleProductComponent({
   product,
@@ -24,6 +25,7 @@ export default function SingleProductComponent({
   removeWishlist,
 }) {
   const dispatch = useDispatch();
+ const  {t}=useTranslation()
 debugger
   return (
     <Card className="single-product-container">
@@ -71,7 +73,7 @@ debugger
           {" "}
           <img src={star} width="15" /> <strong>4.2</strong>{" "}
         </Col>{" "}
-        <Col xs={6}> 182 Reviews</Col>
+        <Col xs={6}> 182 {t("Reviews")}</Col>
       </Row>
     </Card>
   );

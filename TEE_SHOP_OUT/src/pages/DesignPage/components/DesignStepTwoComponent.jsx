@@ -41,6 +41,7 @@ export default function DesignStepTwoComponent(props) {
       product.color,
       product.color,
     ]);
+    debugger
   }, [product]);
 
   const selectColor = (color) => {

@@ -5,6 +5,7 @@ import { getProductCategoryRequest } from "../../../redux/cart/cartActions";
 import { connect } from "react-redux";
 import womenImg from "../../../assets/images/shop/fit/women.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function CategoryListing({ getProductCategoryRequest }) {
   const [categories, setCategories] = useState([]);
@@ -21,6 +22,7 @@ function CategoryListing({ getProductCategoryRequest }) {
 
     getItems();
   }, [getProductCategoryRequest]);
+const {t}=useTranslation()
 
   return (
     <Row className="fit-item">
@@ -28,7 +30,7 @@ function CategoryListing({ getProductCategoryRequest }) {
         <div className="d-flex d-sm-block justify-content-between">
           <div>
             <h6>
-              <strong>Categories</strong>
+              <strong>{t("Categories")}</strong>
             </h6>
             <ul>
               {categories.map((item) => (

@@ -23,6 +23,7 @@ import { TabPanel, TabView } from "primereact/tabview";
 import ResetPasswordComponent from "./Components/ResetPasswordComponent";
 import ProfileUpdateComponent from "./Components/ProfileUpdateComponent";
 import AddressComponent from "./Components/AddressComponent";
+import { useTranslation } from "react-i18next";
 
 
 function ProfileMyOrderComponent() {
@@ -33,7 +34,7 @@ function ProfileMyOrderComponent() {
     const  data = useFetch("https://api.zigners.ae/users/"+uId+"/orders",accessToken);
     console.log(data);
 
-  
+  const {t}=useTranslation()
 
   return (
     <>
@@ -78,19 +79,19 @@ function ProfileMyOrderComponent() {
                      <div className="Order__item__Header">
                        <Row >
                          <Col md={{ span: 2 }} sm ={{ span: 4 }} xs ={{ span: 6 }} >
-                           <p>Order Id</p>
+                           <p>{t("Order Id")}</p>
                            <p className="Order__item__Header__values">{item.orderId.slice(0,8)}</p>
                          </Col>
                          <Col md={{ span: 2 }} sm ={{ span: 4 }}  xs ={{ span: 6 }}>
-                           <p>Order Placed</p>
+                           <p>{t("Order Placed")}</p>
                            <p className="Order__item__Header__values">{item.date.slice(0,10)}</p>
                          </Col>
                          <Col md={{ span: 2 }}   sm ={{ span: 4 }} xs ={{ span: 6 }}>
-                           <p>Payment Status</p>
-                           <p className="Order__item__Header__values">Paid</p>
+                           <p>t{("Payment Status")}</p>
+                           <p className="Order__item__Header__values">{t("Paid")}</p>
                          </Col>
                          <Col md={{ span: 2 }} sm ={{ span: 4 }} xs ={{ span: 6 }} >
-                           <p>Total</p>
+                           <p>{t("Total")}</p>
                            <p className="Order__item__Header__values">{item.total}</p>
                          </Col>
                          <Col md={{ span: 2, offset: 2 }} sm ={{ span: 4 }}  xs ={{ span: 12}}  >
@@ -140,7 +141,7 @@ function ProfileMyOrderComponent() {
                          className="Order__item__Header__values__align"
                        >
                          <a href="#" className="btn-custom">
-                           Cancel
+                           {t("Cancel")}
                          </a>
                          &nbsp;
                        </Col>
@@ -149,7 +150,7 @@ function ProfileMyOrderComponent() {
                          className="Order__item__Header__values__align"
                        >
                          <a href="#" className="btn-custom">
-                           Reorder
+                           {t("Reorder")}
                          </a>
                        </Col>
                      </Row>

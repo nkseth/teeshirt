@@ -11,6 +11,7 @@ import "./SignUpComponent.scss";
 import { logIn } from "../../redux/user/userActions";
 import { resetFormError } from "../../redux/app/appActions";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function LoginComponent({ logIn, errorMsg, removeError, movingToCheckout }) {
   const defaultValues = {
@@ -39,7 +40,7 @@ function LoginComponent({ logIn, errorMsg, removeError, movingToCheckout }) {
       errors[name] && <small className="p-error">{errors[name].message}</small>
     );
   };
-
+const {t}=useTranslation()
   return (
     <div className="sign-up-container">
       <div className="card">
@@ -72,7 +73,7 @@ function LoginComponent({ logIn, errorMsg, removeError, movingToCheckout }) {
                 htmlFor="email"
                 className={classNames({ "p-error": !!errors.email })}
               >
-                Email*
+                {t("Email")}*
               </label>
             </span>
             {getFormErrorMessage("email")}
@@ -98,7 +99,7 @@ function LoginComponent({ logIn, errorMsg, removeError, movingToCheckout }) {
                 htmlFor="password"
                 className={classNames({ "p-error": errors.password })}
               >
-                Password*
+                {t("Password")}*
               </label>
             </span>
             {getFormErrorMessage("password")}

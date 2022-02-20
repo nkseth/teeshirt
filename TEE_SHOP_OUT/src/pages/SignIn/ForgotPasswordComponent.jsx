@@ -11,6 +11,7 @@ import { forgotPassword } from "../../redux/user/userActions";
 import { resetFormError } from "../../redux/app/appActions";
 import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 function ForgotPasswordComponent({ forgotPassword, errorMsg, removeError }) {
   const defaultValues = {
@@ -26,6 +27,7 @@ function ForgotPasswordComponent({ forgotPassword, errorMsg, removeError }) {
     reset,
   } = useForm({ defaultValues });
 
+  const {t}=useTranslation()
   const onSubmit = async (data) => {
     try {
       const response = await forgotPassword(data);
@@ -40,16 +42,16 @@ function ForgotPasswordComponent({ forgotPassword, errorMsg, removeError }) {
       errors[name] && <small className="p-error">{errors[name].message}</small>
     );
   };
-  const passwordHeader = <h6>Pick a password</h6>;
+  const passwordHeader = <h6>{t("Pick a password")}</h6>;
   const passwordFooter = (
     <>
       <Divider />
-      <p className="p-mt-2">Suggestions</p>
+      <p className="p-mt-2">{t("Suggestions")}</p>
       <ul className="p-pl-2 p-ml-2 p-mt-0" style={{ lineHeight: "1.5" }}>
-        <li>At least one lowercase</li>
-        <li>At least one uppercase</li>
-        <li>At least one numeric</li>
-        <li>Minimum 8 characters</li>
+        <li>{t("At least one lowercase")}</li>
+        <li>{t("At least one uppercase")}</li>
+        <li>{t("At least one numeric")}</li>
+        <li>{t("Minimum 8 characters")}</li>
       </ul>
     </>
   );
@@ -57,7 +59,7 @@ function ForgotPasswordComponent({ forgotPassword, errorMsg, removeError }) {
   return (
     <div className="sign-up-container">
       <div className="card">
-        <h5 className="p-text-center">Forgot Password</h5>
+        <h5 className="p-text-center">{t("Forgot Password")}</h5>
         {errorMsg && <small className="p-error">{errorMsg}</small>}
         <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
           <div className="p-field">
@@ -86,7 +88,7 @@ function ForgotPasswordComponent({ forgotPassword, errorMsg, removeError }) {
                 htmlFor="email"
                 className={classNames({ "p-error": !!errors.email })}
               >
-                Email*
+                {t("Email")}*
               </label>
             </span>
             {getFormErrorMessage("email")}

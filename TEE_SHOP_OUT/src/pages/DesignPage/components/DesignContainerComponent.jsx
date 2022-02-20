@@ -120,6 +120,7 @@ const DesignContainerComponent = () => {
   const { product, step } = useSelector(mapState);
 const {t}=useTranslation()
   console.log("step", step);
+  debugger
   return (
     <Row className="design-container">
       {(step === 1 || step === 2) && (

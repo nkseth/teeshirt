@@ -23,6 +23,7 @@ import accessories from "../../../assets/images/home/Accessories.png";
 import brush from "../../../assets/images/home/brush stroke.svg";
 import tshirticon from "../../../assets/images/home/tshirt-icon.svg";
 import wtbrush from "../../../assets/images/home/wt-brush stroke.svg";
+import { useTranslation } from "react-i18next";
 
 const leftBannertBtnStyle = {
   height: "3rem",
@@ -44,6 +45,7 @@ export default function HomePageComponent() {
     console.log("/design");
     history.push("/design");
   };
+  const  {t}=useTranslation()
 
   return (
     <>
@@ -53,10 +55,10 @@ export default function HomePageComponent() {
             <img src={brush} alt="" width="60" />
             <span>
               <h5>
-                <strong>Design your own T-shirt</strong>
+                <strong>{t("Design your own T-shirt")}</strong>
                 <br />
                 <span className="d-block d-xl-none">
-                  <strong>Or Shop our Design </strong>
+                  <strong>{t("Or Shop our Design")} </strong>
                 </span>
               </h5>
             </span>
@@ -93,7 +95,7 @@ export default function HomePageComponent() {
             <img src={wtbrush} alt="" width="60" />
             <span>
               <h5>
-                <strong>Shop our Design explore Now</strong>
+                <strong>{t("Shop our Design explore Now")}</strong>
               </h5>
             </span>
           </div>
@@ -111,7 +113,7 @@ export default function HomePageComponent() {
         {/* How it Works Start */}
         <Row>
           <h3>
-            <strong>How it works</strong>
+            <strong>{t("How it works")}</strong>
           </h3>
         </Row>
         <Row className="info-box-conatiner">
@@ -143,7 +145,7 @@ export default function HomePageComponent() {
         {/* How it Works End */}
         <Row>
           <h3>
-            <strong>Find your perfect canvas </strong>
+            <strong>{t("Find your perfect canvas")} </strong>
           </h3>
         </Row>
         <div className="image-row">

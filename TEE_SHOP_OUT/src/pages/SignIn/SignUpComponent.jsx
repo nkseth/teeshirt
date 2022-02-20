@@ -10,8 +10,10 @@ import "./SignUpComponent.scss";
 import { signUp } from "../../redux/user/userActions";
 import { resetFormError } from "../../redux/app/appActions";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function SignUpComponent({ signUp, errorMsg, removeError }) {
+  const {t}=useTranslation()
   const defaultValues = {
     firstName: "",
     lastName: "",
@@ -38,16 +40,16 @@ function SignUpComponent({ signUp, errorMsg, removeError }) {
       errors[name] && <small className="p-error">{errors[name].message}</small>
     );
   };
-  const passwordHeader = <h6>Pick a password</h6>;
+  const passwordHeader = <h6>{t("Pick a password")}</h6>;
   const passwordFooter = (
     <>
       <Divider />
-      <p className="p-mt-2">Suggestions</p>
+      <p className="p-mt-2">{t("Suggestions")}</p>
       <ul className="p-pl-2 p-ml-2 p-mt-0" style={{ lineHeight: "1.5" }}>
-        <li>At least one lowercase</li>
-        <li>At least one uppercase</li>
-        <li>At least one numeric</li>
-        <li>Minimum 8 characters</li>
+      <li>{t("At least one lowercase")}</li>
+        <li>{t("At least one uppercase")}</li>
+        <li>{t("At least one numeric")}</li>
+        <li>{t("Minimum 8 characters")}</li>
       </ul>
     </>
   );
@@ -77,7 +79,7 @@ function SignUpComponent({ signUp, errorMsg, removeError }) {
                 htmlFor="firstName"
                 className={classNames({ "p-error": errors.firstName })}
               >
-                Fisrt Name*
+                {t("First Name")}*
               </label>
             </span>
             {getFormErrorMessage("firstName")}
@@ -101,7 +103,7 @@ function SignUpComponent({ signUp, errorMsg, removeError }) {
                 htmlFor="lastName"
                 className={classNames({ "p-error": errors.lastName })}
               >
-                Last Name*
+                {t("Last Name")}*
               </label>
             </span>
             {getFormErrorMessage("lastName")}
@@ -132,7 +134,7 @@ function SignUpComponent({ signUp, errorMsg, removeError }) {
                 htmlFor="email"
                 className={classNames({ "p-error": !!errors.email })}
               >
-                Email*
+                {t("Email")}*
               </label>
             </span>
             {getFormErrorMessage("email")}
@@ -159,7 +161,7 @@ function SignUpComponent({ signUp, errorMsg, removeError }) {
                 htmlFor="password"
                 className={classNames({ "p-error": errors.password })}
               >
-                Password*
+                {t("Password")}*
               </label>
             </span>
             {getFormErrorMessage("password")}

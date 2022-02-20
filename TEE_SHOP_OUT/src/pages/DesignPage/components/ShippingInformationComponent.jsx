@@ -5,6 +5,7 @@ import { RadioButton } from "primereact/radiobutton";
 import { Button } from "primereact/button";
 import { setShippimgMethod } from "../../../redux/user/userActions";
 import { goToPayment } from "../../../redux/design/designActions";
+import { useTranslation } from "react-i18next";
 
 const mapState = (state) => ({
   shippingInfo: state.user.shippingInfo,
@@ -20,45 +21,45 @@ export default function ShippingInformationComponent() {
    
      dispatch(goToPayment());
   };
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="info-head">
         <Col xs={6} className="info-category-head">
-          Shipping Information
+          {t("Shipping Information")}
         </Col>
       </Row>
       <Row style={{ padding: "1em" }}>
         <Col xs={12} className="ship-box">
           <Row className="info-row justify-content-between">
             <Col xs={12} sm={2} className="label">
-              Contact
+              {t("Contact")}
             </Col>
             <Col sm={8}>{shippingInfo.email}</Col>
             <Col sm={2} className="change-label">
-              Change
+              {t("Change")}
             </Col>
           </Row>
           <Row className="info-row justify-content-between">
             <Col xs={12} sm={2} className="label">
-              Ship to
+              {t("Ship to")}
             </Col>
             <Col sm={8}>
               {shippingInfo.firstName} {shippingInfo.lastName} <br />
               {shippingInfo.address} {shippingInfo.street}, {shippingInfo.city},
               {shippingInfo.region}, {shippingInfo.country},{" "}
               {shippingInfo.pinCode} <br />
-              mobile: {shippingInfo.phone}
+              {t("mobile")}: {shippingInfo.phone}
             </Col>
             <Col sm={2} className="change-label">
-              Change
+              {t("Change")}
             </Col>
           </Row>
         </Col>
       </Row>
       <Row className="info-head">
         <Col xs={6} className="info-category-head">
-          Shipping Method
+          {t("Shipping Method")}
         </Col>
       </Row>
       <Row style={{ padding: "1em" }}>
@@ -74,11 +75,11 @@ export default function ShippingInformationComponent() {
                   checked={shipMethod === "free"}
                 />
                 <label htmlFor="shipMethod1" className="mt-2">
-                  Free Shipping- For Prepaid Orders
+                  {t("Free Shipping- For Prepaid Orders")}
                 </label>
               </div>
             </Col>
-            <Col xs={2}> Free</Col>
+            <Col xs={2}> {t("Free")}</Col>
           </Row>
           <Row className="info-row align-items-center">
             <Col xs={10}>
@@ -91,7 +92,7 @@ export default function ShippingInformationComponent() {
                   checked={shipMethod === "standard"}
                 />
                 <label htmlFor="shipMethod2" className="mt-2">
-                  Standard Shipping ( Cash On Delivery )
+                  {t("Standard Shipping ( Cash On Delivery )")}
                 </label>
               </div>
             </Col>

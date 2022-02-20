@@ -25,6 +25,7 @@ import {
   getWishlistRequest,
   deleteWishlistRequest,
 } from "../../redux/user/userActions";
+import { useTranslation } from "react-i18next";
 
 // const mapState = state => ({
 //   wishlist: state.user.wishlist,
@@ -38,6 +39,8 @@ function WishListComponent({
   deleteWishlistRequest,
 }) {
   // const { wishlist } = useSelector(mapState)
+  const {t}=useTranslation()
+  
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [sortBy, setSortBy] = useState(null);
   const [brandFilters, setBrandFilters] = useState([]);
@@ -214,7 +217,7 @@ function WishListComponent({
             alignItems: "center",
           }}
         >
-          <div style={{ color: "#888" }}>Wishlist is empty!</div>
+          <div style={{ color: "#888" }}>{t("Wishlist is empty")}!</div>
         </div>
       );
     } else {

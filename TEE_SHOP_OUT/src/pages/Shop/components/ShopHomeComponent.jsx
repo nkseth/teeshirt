@@ -32,6 +32,7 @@ import BrandsListing from "./BrandsListing";
 import CategoryListing from "./CategoryListing";
 import { connect } from "react-redux";
 import { getTrendingProductsRequest } from "../../../redux/cart/cartActions";
+import { useTranslation } from "react-i18next";
 
 // const ShopProductDetail = lazy(() => import('./Details/ProductDetailComponent'))
 
@@ -72,7 +73,7 @@ function ShopHomeComponent({ getTrendingProductsRequest }) {
     { id: 2, name: "Toddler" },
     { id: 3, name: "Infant" },
   ];
-
+const {t}=useTranslation()
   return (
     <>
       <Row className="shop-banner-container">
@@ -82,7 +83,7 @@ function ShopHomeComponent({ getTrendingProductsRequest }) {
             style={{ flexDirection: "column", justifyContent: "center" }}
           >
             <h2>Custom T-shirts</h2>
-            <div className="p-text">When Style Meets Personalisation </div>
+            <div className="p-text">{t("When Style Meets Personalisation")} </div>
           </div>
         </Col>
         <Col xs={6} className="shop-banner-right">
@@ -98,7 +99,7 @@ function ShopHomeComponent({ getTrendingProductsRequest }) {
         <div className="w-100 d-flex justify-content-between align-items-center px-4">
           <div>
             {" "}
-            <h3>Trending now </h3>
+            <h3>{t("Trending now")} </h3>
           </div>
           <div style={{ color: "#FF6740", cursor: "pointer" }}>
             <Link to="/shop/product">See all </Link>{" "}
@@ -129,7 +130,7 @@ function ShopHomeComponent({ getTrendingProductsRequest }) {
       <Row className="style-category-container">
         <div className="header-row">
           <h3>
-            <strong>Browse By Fit</strong>
+            <strong>{t("Browse By Fit")}</strong>
           </h3>
         </div>
         <Col xs={12} xl={6}>
