@@ -57,8 +57,9 @@ export default function NavbarComponent(props) {
     const languageValue = e.value
     i18n.changeLanguage(languageValue);
     if(languageValue==="hn"){
-      setValue(!value);
+      setValue(true);
     }
+    else setValue(false);
   }
 
   const { location } = props;
